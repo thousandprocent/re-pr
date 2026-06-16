@@ -3,11 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>monopo saigon — Production Canvas</title>
+  <title>monopo saigon — Kinetic Experience</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Raleway:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Стили для библиотеки плавной прокрутки Lenis -->
+  <style>
+    html.lenis, html.lenis body { height: auto; }
+    .lenis-smooth { scroll-behavior: auto !important; }
+    .lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis-stopped { overflow: hidden; }
+    .lenis-scrolling iframe { pointer-events: none; }
+  </style>
 </head>
 <body>
 
@@ -34,15 +43,14 @@
 
   <!-- Hero Cinematic Stage -->
   <header class="hero-stage">
-    <div class="media-container">
+    <div class="media-container" data-parallax="-0.15">
       <div class="overlay-darkness"></div>
-      <!-- Интерактивный бэкграунд: кинематографичный таймлапс/3D-динамика -->
       <video class="hero-video" autoplay muted loop playsinline>
         <source src="https://player.vimeo.com/external/435649343.hd.mp4?s=254a6133a884b6afb28291079d8df26d9d1ab80a&profile_id=172&oauth2_token_id=57447761" type="video/mp4">
       </video>
     </div>
     
-    <div class="hero-content">
+    <div class="hero-content" data-parallax="0.2">
       <h1 class="monumental-type">MONOPO<br>SAIGON</h1>
     </div>
 
@@ -62,11 +70,11 @@
     <div class="structural-line"></div>
     <div class="content-wrapper">
       <div class="editorial-grid">
-        <div class="grid-left">
+        <div class="grid-left" data-parallax="-0.05">
           <h2 class="section-title">Cinematic<br>Editorial.</h2>
         </div>
         <div class="grid-right">
-          <p class="lead-text">Monopo Saigon operates a cinematic editorial canvas: pure monochrome architecture interrupted by full-bleed dark atmospheric frames carrying 3D organic imagery.</p>
+          <p class="lead-text">Monopo Saigon operates a cinematic editorial canvas: pure monochrome architecture interrupted by full-bleed dark atmospheric frames carrying 3D organic imagery[cite: 1].</p>
           <p class="sub-text">The system is fundamentally light and structural, with dark sections acting as immersive gallery walls rather than primary surface mode[cite: 1]. Typography does the emotional work[cite: 1].</p>
         </div>
       </div>
@@ -75,9 +83,9 @@
 
   <!-- Gallery Break: Ink Black Frame -->
   <section class="immersive-break layer-reveal">
-    <div class="full-bleed-media">
+    <div class="full-bleed-media" data-parallax="-0.1">
       <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Architecture Interlude">
-      <div class="media-title-card">
+      <div class="media-title-card" data-parallax="0.05">
         <span class="meta-label">SPACE 01 / ARCHITECTURE</span>
         <h3>The Ground State</h3>
       </div>
@@ -93,8 +101,8 @@
       </div>
       
       <div class="showcase-columns">
-        <!-- Project 01 -->
-        <div class="project-card">
+        <!-- Project 01 (движется чуть медленнее) -->
+        <div class="project-card" data-parallax="0.05">
           <div class="card-media">
             <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Mercury Flow">
           </div>
@@ -104,8 +112,8 @@
           </div>
         </div>
 
-        <!-- Project 02 -->
-        <div class="project-card">
+        <!-- Project 02 (движется чуть быстрее, создавая асимметрию оригинала) -->
+        <div class="project-card" data-parallax="-0.05">
           <div class="card-media">
             <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop" alt="Oxblood Study">
           </div>
@@ -118,7 +126,7 @@
     </div>
   </section>
 
-  <!-- Cookie Banner (Graphite Affordance) -->
+  <!-- Cookie Banner -->
   <div class="cookie-overlay" id="cookiePolicy">
     <div class="cookie-text">
       We use cookies to anchor your digital experience. Read our <a href="#">Privacy policy</a>[cite: 1].
@@ -129,25 +137,56 @@
     </div>
   </div>
 
+  <!-- Подключаем скрипт плавной прокрутки Lenis -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  
   <script>
-    // Мягкое изменение стиля навигации при скролле
-    const nav = document.getElementById('topNav');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        nav.classList.add('is-active');
+    // 1. Инициализация плавного кинетического скролла (как на monopo.vn)
+    const lenis = new Lenis({
+      duration: 1.4, // Скорость доезжания скролла (чем выше, тем мягче)
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Фирменная кривая затухания скорости
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1
+    });
+
+    // Связываем анимацию параллакса с тиками скролла
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // 2. Логика эффекта Параллакса без тяжелых библиотек
+    const parallaxElements = document.querySelectorAll('[data-parallax]');
+    
+    lenis.on('scroll', (e) => {
+      const scrollY = window.scrollY;
+      
+      parallaxElements.forEach(el => {
+        const speed = parseFloat(el.getAttribute('data-parallax'));
+        // Смещаем элемент по оси Y в зависимости от скорости в дата-атрибуте
+        const yPos = -(scrollY * speed);
+        el.style.transform = `translateY(${yPos}px)`;
+      });
+
+      // Переключатель темы навигации
+      if (scrollY > 100) {
+        document.getElementById('topNav').classList.add('is-active');
       } else {
-        nav.classList.remove('is-active');
+        document.getElementById('topNav').classList.remove('is-active');
       }
     });
 
-    // Анимация контролируемого появления (Intersection Observer)
+    // 3. Плавное появление (Fade-in) блоков при первом скролле
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
 
     document.querySelectorAll('.layer-reveal').forEach(section => {
       observer.observe(section);
