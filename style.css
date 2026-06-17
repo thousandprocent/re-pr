@@ -371,3 +371,52 @@ body {
   color: var(--color-ash);
   cursor: pointer;
 }
+/* Включаем аппаратную поддержку для плавности параллакса */
+[data-parallax] {
+  will-change: transform;
+  transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Ограничитель для видео, чтобы параллакс не вылезал за границы */
+.hero-stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Важно: скрывает излишки параллакса видео */
+}
+
+.media-container {
+  position: absolute;
+  top: -10%; /* Даем запас по высоте для движения вниз */
+  left: 0;
+  width: 100%;
+  height: 120%; /* Делаем контейнер больше экрана, чтобы не было пустых полей при скролле */
+  z-index: 1;
+}
+
+/* Изменяем анимацию карточек при наведении на более глубокую */
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .card-media img {
+  transform: scale(1.06); /* Мягкое наплывание картинки */
+}
+
+/* Плавный скролл-эффект появления контента */
+.layer-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.layer-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
