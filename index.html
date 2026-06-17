@@ -103,14 +103,14 @@
       <div class="showcase-columns">
         <!-- Project 01 (движется чуть медленнее) -->
         <div class="project-card" data-parallax="0.05">
-          <div class="card-media">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Mercury Flow">
-          </div>
-          <div class="card-info">
-            <h4>Mercury Flow</h4>
-            <span>Atmospheric Gradient Render</span>
-          </div>
-        </div>
+			<div class="card-media">
+				<img id="p1_image" src="" alt="Project">
+			</div>
+			<div class="card-info">
+				<h4 id="p1_title"></h4>
+				<span>Atmospheric Gradient Render</span>
+			</div>
+		</div>
 
         <!-- Project 02 (движется чуть быстрее, создавая асимметрию оригинала) -->
         <div class="project-card" data-parallax="-0.05">
@@ -197,5 +197,18 @@
       setTimeout(() => document.getElementById('cookiePolicy').style.display = 'none', 400);
     }
   </script>
+  <script>
+  // Загрузка контента из JSON, который редактирует админка
+  fetch('/content.json')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('hero_title').innerText = data.hero_title;
+      document.getElementById('editorial_title').innerText = data.editorial_title;
+      document.getElementById('lead_text').innerText = data.lead_text;
+      document.getElementById('sub_text').innerText = data.sub_text;
+      document.getElementById('p1_title').innerText = data.project_01_title;
+      document.getElementById('p1_image').src = data.project_01_image;
+    });
+</script>
 </body>
 </html>
