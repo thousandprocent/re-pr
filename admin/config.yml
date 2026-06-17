@@ -1,0 +1,25 @@
+backend:
+  name: github
+  repo: ТВОЙ_ЛОГИН_GITHUB/ИМЯ_РЕПОЗИТОРИЯ # Например: ivan/monopo-saigon
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "content"
+    label: "Контент сайта"
+    delete: false # Чтобы сотрудники случайно не удалили страницу
+    editor:
+      preview: false # Отключаем стандартное превью, смотрим сразу на сайте
+    files:
+      - file: "content.json"
+        label: "Главная страница"
+        name: "home"
+        fields:
+          - { label: "Главный заголовок (Hero)", name: "hero_title", widget: "text" }
+          - { label: "Заголовок секции", name: "editorial_title", widget: "text" }
+          - { label: "Главный абзац текста", name: "lead_text", widget: "text" }
+          - { label: "Второстепенный текст", name: "sub_text", widget: "text" }
+          - { label: "Название 1-го проекта", name: "project_01_title", widget: "string" }
+          - { label: "Обложка 1-го проекта (Ссылка или файл)", name: "project_01_image", widget: "image" }
