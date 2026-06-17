@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>monopo saigon — Production Canvas</title>
+  <title>monopo saigon — Style Reference</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Raleway:wght@400&display=swap" rel="stylesheet">
@@ -11,7 +11,6 @@
 </head>
 <body>
 
-  <!-- Floating Navigation -->
   <nav class="top-nav" id="topNav">
     <div class="nav-container">
       <a href="#" class="logo">monopo saigon</a>
@@ -32,130 +31,102 @@
     </div>
   </nav>
 
-  <!-- Hero Cinematic Stage -->
-  <header class="hero-stage">
-    <div class="media-container">
-      <div class="overlay-darkness"></div>
-      <!-- Интерактивный бэкграунд: кинематографичный таймлапс/3D-динамика -->
-      <video class="hero-video" autoplay muted loop playsinline>
-        <source src="https://player.vimeo.com/external/435649343.hd.mp4?s=254a6133a884b6afb28291079d8df26d9d1ab80a&profile_id=172&oauth2_token_id=57447761" type="video/mp4">
-      </video>
-    </div>
+  <header class="dark-immersive-frame hero-section">
+    <div class="overlay-mesh"></div>
+    <video class="bg-video" autoplay muted loop playsinline>
+      <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c054f74d0e6ec33990924e03cf445fcf&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+    </video>
     
-    <div class="hero-content">
-      <h1 class="monumental-type">MONOPO<br>SAIGON</h1>
-    </div>
+    <h1 class="hero-statement">MONOPO<br>SAIGON</h1>
 
-    <!-- Rotating Scroll Badge -->
-    <div class="scroll-badge">
-      <svg viewBox="0 0 100 100">
-        <path id="textPath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
-        <text>
-          <textPath href="#textPath">SCROLL TO EXPLORE • MONOPO SAIGON • </textPath>
+    <div class="scroll-indicator">
+      <svg viewBox="0 0 100 100" width="100" height="100">
+        <defs>
+          <path id="circlePath" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" />
+        </defs>
+        <text font-family="system-ui" font-size="9" fill="#ffffff" letter-spacing="2">
+          <textPath href="#circlePath">SCROLL TO EXPLORE • SCROLL TO EXPLORE • </textPath>
         </text>
       </svg>
     </div>
   </header>
 
-  <!-- Editorial Section 01: Pure White Canvas -->
-  <section class="editorial-layout background-white layer-reveal">
-    <div class="structural-line"></div>
-    <div class="content-wrapper">
-      <div class="editorial-grid">
-        <div class="grid-left">
-          <h2 class="section-title">Cinematic<br>Editorial.</h2>
-        </div>
-        <div class="grid-right">
-          <p class="lead-text">Monopo Saigon operates a cinematic editorial canvas: pure monochrome architecture interrupted by full-bleed dark atmospheric frames carrying 3D organic imagery.</p>
-          <p class="sub-text">The system is fundamentally light and structural, with dark sections acting as immersive gallery walls rather than primary surface mode[cite: 1]. Typography does the emotional work[cite: 1].</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery Break: Ink Black Frame -->
-  <section class="immersive-break layer-reveal">
-    <div class="full-bleed-media">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Architecture Interlude">
-      <div class="media-title-card">
-        <span class="meta-label">SPACE 01 / ARCHITECTURE</span>
-        <h3>The Ground State</h3>
-      </div>
-    </div>
-  </section>
-
-  <!-- Editorial Section 02: Grid Showcase -->
-  <section class="editorial-layout background-white layer-reveal">
-    <div class="structural-line"></div>
-    <div class="content-wrapper">
-      <div class="work-showcase-meta">
-        <span class="meta-label">SELECTED WORK</span>
-      </div>
+  <main class="editorial-section">
+    <div class="editorial-container">
+      <h2 class="editorial-heading">Restraint<br>As Authority.</h2>
       
-      <div class="showcase-columns">
-        <!-- Project 01 -->
-        <div class="project-card">
-          <div class="card-media">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Mercury Flow">
-          </div>
-          <div class="card-info">
-            <h4>Mercury Flow</h4>
-            <span>Atmospheric Gradient Render</span>
+      <div class="editorial-grid-2col">
+        <div class="text-block">
+          <p class="body-lg">Monopo Saigon operates a cinematic editorial canvas: pure monochrome architecture interrupted by full-bleed dark atmospheric frames carrying 3D organic imagery.</p>
+          <p class="body-text">The system is fundamentally light and structural, with dark sections acting as immersive gallery walls rather than primary surface mode. Typography does the emotional work — stretched across an extreme scale from 9px micro-labels to 225px hero statements, creating tension between whisper-fine UI and monumental display.</p>
+        </div>
+        <div class="image-block">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Organic 3D Form Exhibit">
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="dark-immersive-frame feature-showcase">
+    <div class="editorial-container">
+      <span class="section-label">SELECTED EXHIBITS</span>
+      <h2 class="editorial-heading text-white">Cinematic Contrasts</h2>
+      
+      <div class="work-grid-3col">
+        <div class="grid-cell">
+          <img src="https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=600&auto=format&fit=crop" alt="Mercury Flow Concept">
+          <div class="cell-overlay">
+            <span>MERCURY FLOW</span>
           </div>
         </div>
-
-        <!-- Project 02 -->
-        <div class="project-card">
-          <div class="card-media">
-            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop" alt="Oxblood Study">
+        <div class="grid-cell">
+          <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=600&auto=format&fit=crop" alt="Oxblood Organic Form">
+          <div class="cell-overlay">
+            <span>OXBLOOD STUDY</span>
           </div>
-          <div class="card-info">
-            <h4>Oxblood Study</h4>
-            <span>Organic 3D Forms</span>
+        </div>
+        <div class="grid-cell">
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=600&auto=format&fit=crop" alt="Copper Inversion">
+          <div class="cell-overlay">
+            <span>COPPER INVERSION</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Cookie Banner (Graphite Affordance) -->
-  <div class="cookie-overlay" id="cookiePolicy">
-    <div class="cookie-text">
-      We use cookies to anchor your digital experience. Read our <a href="#">Privacy policy</a>[cite: 1].
+  <section class="editorial-section">
+    <div class="editorial-container">
+      <div class="pull-quote-container">
+        <blockquote class="editorial-quote">
+          "The system is intentionally achromatic. Color is nearly absent from the UI itself — the brand voice lives in scale, space, and atmospheric photography."
+        </blockquote>
+      </div>
     </div>
-    <div class="cookie-buttons">
-      <button class="pill-action" onclick="dismissCookie()">Accept</button>
-      <button class="close-icon" onclick="dismissCookie()">✕</button>
+  </section>
+
+  <div class="cookie-banner" id="cookieBanner">
+    <p>We use cookies to optimize your cinematic editorial experience. By continuing, you agree to our <a href="#">Privacy policy</a>.</p>
+    <div class="cookie-actions">
+      <button class="pill-button btn-graphite" onclick="closeCookieBanner()">Accept</button>
+      <button class="dismiss-x" onclick="closeCookieBanner()">✕</button>
     </div>
   </div>
 
   <script>
-    // Мягкое изменение стиля навигации при скролле
-    const nav = document.getElementById('topNav');
+    // Смена темы навигации при скролле
+    const topNav = document.getElementById('topNav');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        nav.classList.add('is-active');
+      if (window.scrollY > window.innerHeight - 80) {
+        topNav.classList.add('scrolled');
       } else {
-        nav.classList.remove('is-active');
+        topNav.classList.remove('scrolled');
       }
     });
 
-    // Анимация контролируемого появления (Intersection Observer)
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.layer-reveal').forEach(section => {
-      observer.observe(section);
-    });
-
-    function dismissCookie() {
-      document.getElementById('cookiePolicy').style.opacity = '0';
-      setTimeout(() => document.getElementById('cookiePolicy').style.display = 'none', 400);
+    // Закрытие куки-баннера
+    function closeCookieBanner() {
+      document.getElementById('cookieBanner').style.display = 'none';
     }
   </script>
 </body>
